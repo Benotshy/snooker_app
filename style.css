@@ -1,0 +1,485 @@
+/* Add this style to your CSS file or within a <style> tag in your HTML */
+
+.main-img {
+    display: flex;
+    align-items: center; /* Aligns items vertically */
+    justify-content: center; /* Centers items horizontally */
+    text-align: center; /* Aligns text within each flex item if needed */
+  }
+  
+  /* If your images and text are direct children of .main-img, 
+     add this class to style them. Otherwise, wrap each image and 
+     its corresponding player name in a div and apply this class to it. */
+  .img-container {
+    display: flex;
+    flex-direction: column; /* Stacks image and text on top of each other */
+    align-items: center; /* Aligns them centrally on the cross axis */
+    justify-content: center; /* Centers them along the main axis */
+    flex: 1; /* Gives each container an equal ability to grow */
+  }
+  
+  /* Optional: if you want some space between the text and the image */
+  .img-container img {
+    margin-bottom: 8px; /* Adjust the value as needed */
+  }
+
+  .P1-2{
+    font-weight: 700;
+    font-size: 25px;
+    color: black;
+  }
+  .score-1{
+    font-size: 45px;
+    color: black;
+    font-weight: 700;
+  }
+  .score-2{
+    font-size: 45px;
+    color: black;
+    font-weight: 700;
+  }
+  .buttons-container {
+    display: flex;
+    flex-direction: column; /* Stack the buttons and the container vertically */
+    align-items: center; /* Center-align the flex items */
+    margin-top: 20px; /* Space between VS image and buttons */
+  }
+  
+  .btn-1{
+    background-color: #89fc00;
+    color: black;
+    padding: 15px 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: transform 0.6s ease;
+    
+  }
+  .btn-2{
+    background-color: #48cae4;
+    color: black;
+    padding: 15px 15px;
+    font-weight: 600;
+    border-radius: 10px;
+    font-size: 20px;
+    transition: transform 0.6s ease;
+    
+  }
+  .btn-3{
+    background-color: #d00000;
+    color: white;
+    padding: 12px 45px;
+    font-weight: 750;
+    border-radius: 10px;
+    font-size: 23px;
+    margin-top: 10px;
+    transition: transform 0.6s ease;
+    
+  }
+  .top-buttons {
+    display: flex;
+    justify-content: center; /* Center the first two buttons horizontally */
+    gap: 10px; /* Space between the first two buttons */
+  }
+  .btn-1:hover, .btn-2:hover, .btn-3:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+  }
+  .ball-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  .ball {
+    width: 100px;
+    height: 100px;
+     /* Replace with your ball images */
+    margin: 10px; /* Adjust spacing between balls as needed */
+    transition: transform 0.6s ease-in-out;
+  }
+  .ball:hover{
+    cursor: pointer;
+    transform: scale(1.1);
+    border: 2px solid rgb(70, 70, 70);
+    border-radius: 50%;
+  }
+  @media (max-width: 768px) {
+    .ball {
+      width: calc(50% - 20px); /* For 5 balls in a row */
+    }
+    .ball:hover{
+        border: none;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .ball {
+      width: calc(20% - 20px); /* For 5 balls in a row on mobile */
+    }
+    .ball:hover{
+        border: none;
+    }
+  }
+@media (max-width: 768px) {
+    .vs-image {
+        width: 70%;
+        margin-bottom: 10px;
+    }
+}
+.vs-image{
+    margin-bottom: 35px;
+}
+
+
+/* Define the styles for the glowing effect on active score displays */
+
+.score-2.active {
+  /* Add your desired styling for the glowing effect here */
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.8); /* Green glow for Player 1 */
+}
+.score-1.active{
+    text-shadow: 0 0 20px rgba(0, 140, 255, 0.8);
+}
+#timer{
+    font-weight: 800;
+    font-size: 30px;
+    color: black;
+    max-width: 30vw !important;
+}
+/* @media (max-width: 768px){
+    #timer{
+        max-width: 10vw ;
+    }
+} */
+.wrapper {
+    background-color: rgba(26, 187, 11, 0.32); /* Same as #156f0d52 */
+    padding-left: 30px;
+    padding-right: 30px;
+    margin-left: auto; /* Centers the wrapper if width is less than 100% */
+    margin-right: auto;
+    /* You may want to add a specific width or max-width here */
+    width: 90%; /* Example: width is less than 100% to allow for background visibility */
+    max-width: 1200px; /* This ensures that the content does not stretch too wide on larger screens */
+    /* Add more styles here as necessary */
+    border-radius: 10px;
+    margin-top: 45px;
+    border: 1.5px solid black;
+}
+
+.animated-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -100;
+    background: linear-gradient(45deg, rgba(137, 147, 115, 0.718), #aef);
+    background-size: 400% 400%;
+    animation: gradientShift 15s ease infinite;
+    overflow: hidden;
+}
+
+.square {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background-color: #fff;
+    opacity: 0.6;
+    /* Starting from off-screen */
+    top: -20px; 
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#square1 {
+    animation: fallRotate 10s linear infinite;
+    left: 10%;
+    background-color: #2f472d;
+}
+
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+
+/* Repeat and modify for each square */
+#square2 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 0.5s;
+    left: 5%;
+    background-color: #fca30e;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square3 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 4.9s;
+    left: 90%;
+    background-color: #425cdd;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square4 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 2.5s;
+    left: 98%;
+    background-color: #14fb29;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square5 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 3.6s;
+    left: 78%;
+    background-color: #316175;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square6 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 6.5s;
+    left: 18%;
+    background-color: #d8dcc4;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square7 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 5.3s;
+    left: 85%;
+    background-color: #d09d00;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square8 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 8.5s;
+    left: 69%;
+    background-color: #e37db5;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square9 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 10s;
+    left: 64%;
+    background-color: #6c2d37;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square10 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 4s;
+    left: 50%;
+    background-color: #9d6dd0;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square11 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 3.5s;
+    left: 55%;
+    background-color: #d6235c;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square12 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 2.5s;
+    left: 49%;
+    background-color: #6ecef0;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square13 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 7.5s;
+    left: 43%;
+    background-color: #a4a7db;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square14 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 9s;
+    left: 39%;
+    background-color: #48cae4;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square15 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 6s;
+    left: 32%;
+    background-color: #6db615;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square16 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 4.5s;
+    left: 30%;
+    background-color: #93ecfb;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+#square17 {
+    animation: fallRotate 8s linear infinite;
+    animation-delay: 1s;
+    left: 25%;
+    background-color: #e407d8;
+}
+@keyframes fallRotate {
+    0% {
+        top: -20px;
+        transform: rotate(0deg);
+    }
+    100% {
+        top: 100%;
+        transform: rotate(720deg);
+    }
+}
+.break{
+    font-size: 20px;
+    font-weight: 600;
+    color: brown;
+}
+
+
+
+  
+  
+  
+  
+  
